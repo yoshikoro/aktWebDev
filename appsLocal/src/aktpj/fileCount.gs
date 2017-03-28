@@ -1,4 +1,8 @@
-//notCompフォルダー内のファイル　@parm = strName ret = nameArray
+/**
+ * var fileNameArray = fldCts("targetFolder");
+ * @pram{String} folderNameString
+ * @return{String[]} fileNameString
+ */
 function fldCts(folderName) {
 var ftl = DriveApp.getFoldersByName(folderName).next().getFiles(); 
 var fileName = [];
@@ -7,9 +11,4 @@ while (ftl.hasNext()) {
   fileName.push(file + "<br>");
   }
 return fileName
-}
-
-function flcount(){
-var fileCount = fldCts("notComp");
-Logger.log(fileCount);
 }
