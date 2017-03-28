@@ -9,14 +9,12 @@
           <b>状況把握</b> 
      </head>    
     <body>
-        <form name="input" action="" method="post">
+        <form name="input" id="factoryakt">
             <br>管理番号入力<br>
             <input type= "text" name="mgrn" value="管理番号" size="10" maxlength="10"><br>
             <br>社員コード入力<br>
             <input type= "text" name="sysn" value="社員コード" size="10" maxlength="10"><br>
-            <br>状況入力<br>
-            <input type= "text" name="gyok" value="状況" size="10" maxlength="10"><br>
-            <button type= "submit" name="btn" value="send" size="10" maxlength="10" onclick="test(2);">送信</button>
+            <button type= "button" name="btn" value="Create" size="10" onclick="sendForm(this.parentNode);">作成</button>
         </form> 
         <div id="List">
             <table id="notcomp" border="3"></table>
