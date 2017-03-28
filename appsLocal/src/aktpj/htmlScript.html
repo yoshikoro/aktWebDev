@@ -1,0 +1,55 @@
+<script>
+function actionCsv(){
+ document.getElementById("showForm").style.display = "none";
+ google.script.run.withSuccessHandler(insertMsg).activeRunningAdd();
+}
+function loadhtml(){
+ document.getElementById("showForm").style.display = "none";
+ document.getElementById("authForm").style.display = "none";
+ google.script.run.withSuccessHandler(insertJson).webfolderSurch();
+}
+function authUserSetup(){
+ document.getElementById("authForm").style.display = "none";
+ google.script.run.withSuccessHandler(loadhtml).folderCreate();
+}
+
+function insertMsg(str){
+ document.getElementById("success").innerHTML = str
+}
+
+function insertJson(strArray){
+ var json = JSON.parse(strArray);
+ if (json[0] == "未認証ユーザーです"){
+  document.getElementById("success").innerHTML = "ボタンを押して認証して下さい";
+  document.getElementById("showForm").style.display = "none";
+  document.getElementById("authForm").style.display = "block";
+  return
+ }
+ if (json[0] == "認証済みフォルダ内にCSVファイルがありません"){
+   document.getElementById("showForm").style.display = "none";
+   var contents = tablefunc(json);
+  document.getElementById("success").innerHTML = contents;
+  return
+ }
+ 
+ var contents = tablefunc(json);
+ document.getElementById("success").innerHTML = contents;
+ document.getElementById("showForm").style.display = "block";
+ return "complete"
+}
+
+function tablefunc(dataArray) {
+ var content = "<table class='type08'><thead><tr>"
+              + "<th>ファイル名</th>"
+              + "</tr></thead><tbody>";  
+  for(var i = 0;i<dataArray.length;i++){ 
+    content = content + "<tr>";
+    content = content + "<th scope='row'><b>" + dataArray[i] + "</b></th>";
+    content = content + "</tr>";
+  }
+  content = content + "</tbody></table><body>";      
+  return content
+}
+
+</script>
+
