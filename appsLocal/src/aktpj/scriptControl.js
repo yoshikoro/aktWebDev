@@ -24,20 +24,3 @@ function deleteScriptControl(exceptFuncNameArray){
    }
  })
 }
-
-/**
-* make trigger
-* @pram{String} functionNameはトリガーしたい関数名
-* @pram{String} atHour後に発動
-* @return{Void}
-*/
-function addScriptControl(functionName,atHour){
-    ScriptApp.newTrigger(functionName)
-    .timeBased()
-    .after(1000*60*60*atHour)
-    .create();
-} 
-
-// 削除ルーチンを作成する
-//originaldataフォルダ内を巡回して
-//対象ファイルを削除
