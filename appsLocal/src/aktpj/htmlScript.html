@@ -1,38 +1,12 @@
 <script>
-function actionCsv(){
- document.getElementById("showForm").style.display = "none";
- google.script.run.withSuccessHandler(insertMsg).activeRunningAdd();
-}
-function loadhtml(){
- document.getElementById("showForm").style.display = "none";
- document.getElementById("authForm").style.display = "none";
- google.script.run.withSuccessHandler(insertJson).webfolderSurch();
-}
-function authUserSetup(){
- document.getElementById("authForm").style.display = "none";
- google.script.run.withSuccessHandler(loadhtml).folderCreate();
-}
-
-function insertMsg(str){
- document.getElementById("success").innerHTML = str
-}
+ window.addEventListener("load",function(){
+ document.getElementsByName("btn")[0].style.display = "none";
+ },false);
+ 
 
 function insertJson(strArray){
  var json = JSON.parse(strArray);
- if (json[0] == "未認証ユーザーです"){
-  document.getElementById("success").innerHTML = "ボタンを押して認証して下さい";
-  document.getElementById("showForm").style.display = "none";
-  document.getElementById("authForm").style.display = "block";
-  return
- }
- if (json[0] == "認証済みフォルダ内にCSVファイルがありません"){
-   document.getElementById("showForm").style.display = "none";
-   var contents = tablefunc(json);
-  document.getElementById("success").innerHTML = contents;
-  return
- }
- 
- var contents = tablefunc(json);
+  var contents = tablefunc(json);
  document.getElementById("success").innerHTML = contents;
  document.getElementById("showForm").style.display = "block";
  return "complete"
