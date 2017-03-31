@@ -13,10 +13,18 @@
         <form name="input" id="factoryakt">
             <br>管理番号入力<br>
             <input type= "text" name="mgrn" value="管理番号" size="10" maxlength="10"><br>
-            <br>社員コード入力<br>
-            <input type= "text" name="sysn" value="社員コード" size="10" maxlength="10"><br>
-            <button type= "button" name="btn" value="Create" size="10" onclick="sendForm(this.parentNode);">作成</button>
+        </form>
+        <form name="datainput" id="machinedata">
+            <br>機械データ入力<br>
+            <input type= "text" name="mgnm" value="社員コード" size="10" maxlength="10"><br>
+            <input type= "text" name="code" value="社員コード" size="10" maxlength="10"><br>
+            <input type= "text" name="mgth" value="社員コード" size="10" maxlength="10"><br>
+            <input type= "text" name="model" value="社員コード" size="10" maxlength="10"><br>
+            <input type= "text" name="serial" value="社員コード" size="10" maxlength="10"><br>   
         </form> 
+        <form name="push" id="senddata">
+            <button type= "button" name="btn" value="Create" size="10" onclick="sendForm(this.parentNode);">作成</button>
+        </form>
         <div id="List">
             <table id="notcomp" border="3"></table>
             <table id="complete" border="3"></table>   
