@@ -19,7 +19,7 @@ function mydatabese(machineCodeStr) {
       this.serial = data[i][8].toString();
       return JSON.stringify(this)
      }
-  }//JSON.stringify(file);var json = JSON.parse(strArray);
+  }
   this.auth = "nodata"
   return JSON.stringify(this)
 }

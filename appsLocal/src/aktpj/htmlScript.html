@@ -6,12 +6,12 @@
 function SendForm(parentNode){
     document.getElementById("search").style.display = "none";
     var mgrn = parentNode.mgrn.value
-    google.script.run.withSuccessHandler(test).mydatabese(mgrn);
+    google.script.run.withSuccessHandler(success).mydatabese(mgrn);
     //document.getElementById("List").innerHTML = mgrn
     //return machineNumber
 } 
 
-function test(mgrn){
+function success(mgrn){
   var json = JSON.parse(mgrn);
   if(json.auth == "nodata"){
     document.getElementById("machinedata").style.display = "block";
