@@ -13,7 +13,7 @@
         <form name="input" id="factoryakt">
             <br>管理番号入力<br>
             <input type= "text" name="mgrn" value="" size="10" maxlength="10"><br>
-            <button type= "button" name="btn" value="Create" size="10" onclick="SendForm(this.parentNode);">作成</button>
+            <button type= "button" name="btn" value="Create" size="10" onclick="SendForm(this.parentNode);" id="search">作成</button>
         </form>
         <form name="input" id="machinedata">
             <br>機械データ入力フォーム<br>
@@ -27,7 +27,10 @@
             <input type= "text" name="model" value="" size="10" maxlength="10"><br>
             製造　番号
             <input type= "text" name="serial" value="" size="10" maxlength="10"><br>
-        </form>   
+            
+            <button type= "button" name="btn" value="Create" size="10" onclick="addDb(this.parentNode);" id="add">機械登録</button>
+        </form><br>
+        <P>ステータスとファイル状況</P>
         <div id="List">
             <table id="notcomp" border="3"></table>
             <table id="complete" border="3"></table>   

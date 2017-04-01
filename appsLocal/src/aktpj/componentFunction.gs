@@ -7,7 +7,7 @@ function mydatabese(machineCodeStr) {
   for (var i = 1;i <= data.length - 1;i++){
     var dataCode = data[i][0].toString();
     if(machineCodeStr == dataCode){
-      this.auth = "auth";
+      this.auth = "ファイルを作成しています";
       this.mgrn = data[i][0].toString();
       this.code = data[i][1].toString().substr(0,3);
       this.mgnm = data[i][2].toString();
