@@ -1,5 +1,5 @@
 function formatdb(){
-  var tempid = PropertiesService.getScriptProperties().getProperty("tempid");
+  var tempid = PropertiesService.getScriptProperties().getProperty("dbid");
   var data = SpreadsheetApp.openById(tempid).getSheets()[0].getDataRange().getValues();
   var csvdata = sendForm(theForm);
   //data = [][];
@@ -8,9 +8,22 @@ function formatdb(){
       var element = array[i];
        data[localRow] = new Array();//２次元配列化
         data[localRow].push(localRow + 1);//a
-}
+    }
 }
 
+function dataAdd(data){
+ // var json = JSON.parse(data);
+  var arr = [];
+    //for(var i = 0;i <= data.length;i++){
+     // arr.push(data[i]); 
+    //}
+    for(var i in data){
+    arr.push(data[i]);
+    }
+  var tempid = PropertiesService.getScriptProperties().getProperty("dbid");
+  var sh = SpreadsheetApp.openById(tempid).getSheets()[0];
+  sh.appendRow(arr);
+}
 function sssendForm(theForm) {
   var fileBlob = theForm.myFile;
   return csvChange(fileBlob);
