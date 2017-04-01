@@ -22,7 +22,3 @@ function mydatabese(machineCodeStr) {
   return "nodata"
 }
 
-function tes(){
-var iam = new mydatabese("320227");
-Logger.log(iam);
-}

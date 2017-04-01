@@ -2,7 +2,11 @@
  window.addEventListener("load",function(){
  document.getElementsByName("btn")[0].style.display = "none";
  },false);
- 
+function SendForm(parentNode){
+    var mgrn = parentNode.mgrn
+    inspectionSheetEdit(mgrn)
+    return machineNumber
+} 
 
 function insertJson(strArray){
  var json = JSON.parse(strArray);
