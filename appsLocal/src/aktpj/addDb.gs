@@ -11,7 +11,7 @@ function formatdb(){
 }
 }
 
-function sendForm(theForm) {
+function sssendForm(theForm) {
   var fileBlob = theForm.myFile;
   return csvChange(fileBlob);
 }

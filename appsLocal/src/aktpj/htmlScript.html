@@ -1,13 +1,18 @@
 <script>
- window.addEventListener("load",function(){
+ /*document.getElementsByName("btn")[0].addEventListener("click",function(){
  document.getElementsByName("btn")[0].style.display = "none";
- },false);
+ },false);*/
 function SendForm(parentNode){
-    var mgrn = parentNode.mgrn
-    inspectionSheetEdit(mgrn)
-    return machineNumber
+    document.getElementsByName("btn")[0].style.display = "none";
+    var mgrn = parentNode.mgrn.value
+    google.script.run.withSuccessHandler(test).mydatabese(mgrn);
+    //document.getElementById("List").innerHTML = mgrn
+    //return machineNumber
 } 
-
+function test(mgrn){
+var json = JSON.parse(mgrn);
+document.getElementById("List").innerHTML = json.auth
+}
 function insertJson(strArray){
  var json = JSON.parse(strArray);
   var contents = tablefunc(json);
