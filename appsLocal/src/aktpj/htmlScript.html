@@ -1,8 +1,14 @@
 <script>
  window.addEventListener("load",function(){
  document.getElementById("machinedata").style.display = "none";
- },false);
- 
+},false);
+
+
+/**
+ * データベースより照合します
+ *@pram{obj} フォームオブジェクト 
+ *@return{void}
+ */  
 function SendForm(parentNode){
     document.getElementById("search").style.display = "none";
     var mgrn = parentNode.mgrn.value
@@ -11,6 +17,11 @@ function SendForm(parentNode){
     //return machineNumber
 } 
 
+/**
+ * コールバック関数
+ *@pram{String} 管理番号 
+ *@return{void}
+ */  
 function success(mgrn){
   var json = JSON.parse(mgrn);
   if(json.auth == "nodata"){
@@ -20,6 +31,27 @@ function success(mgrn){
     document.getElementById("List").innerHTML = json.auth
   }
 }
+
+/**
+ *フォームデータを登録する関数 
+ * @pram{obj} フォームオブジェクト
+ * @pram{String} 管理番号
+ * @return{void}
+ */
+function dataAdd(formObj){
+  var mgrn = document.main.mgrn.value
+  alert(formObj.name + mgrn)
+ // google.script.run.dataAdd(formObj,mgrn);
+
+}
+
+
+
+/**
+ * 配列をテーブル形式に挿入
+ *@pram{String[]} テーブル化する配列 
+ *@return{void}
+ */  
 
 function insertJson(strArray){
  var json = JSON.parse(strArray);

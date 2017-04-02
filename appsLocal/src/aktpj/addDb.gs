@@ -11,7 +11,7 @@ function formatdb(){
     }
 }
 
-function dataAdd(data,mgrn){
+function sheetDataAdd(data,mgrn){
   var tempid = PropertiesService.getScriptProperties().getProperty("dbid");
   var sh = SpreadsheetApp.openById(tempid).getSheets()[0];
   sh.appendRow([mgrn,data.code,data.mgth,data.abil,data.model,"","","",data.serial]);
