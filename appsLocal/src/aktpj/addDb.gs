@@ -11,18 +11,10 @@ function formatdb(){
     }
 }
 
-function dataAdd(data){
- // var json = JSON.parse(data);
-  var arr = [];
-    //for(var i = 0;i <= data.length;i++){
-     // arr.push(data[i]); 
-    //}
-    for(var i in data){
-    arr.push(data[i]);
-    }
+function dataAdd(data,mgrn){
   var tempid = PropertiesService.getScriptProperties().getProperty("dbid");
   var sh = SpreadsheetApp.openById(tempid).getSheets()[0];
-  sh.appendRow(arr);
+  sh.appendRow([mgrn,data.code,data.mgth,data.abil,data.model,"","","",data.serial]);
 }
 function sssendForm(theForm) {
   var fileBlob = theForm.myFile;
