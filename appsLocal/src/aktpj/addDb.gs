@@ -11,10 +11,13 @@ function formatdb(){
     }
 }
 
-function sheetDataAdd(data,mgrn){
+function sheetDataAdd(formObj,mgrn){
   var tempid = PropertiesService.getScriptProperties().getProperty("dbid");
   var sh = SpreadsheetApp.openById(tempid).getSheets()[0];
-  sh.appendRow([mgrn,data.code,data.mgth,data.abil,data.model,"","","",data.serial]);
+  var json = JSON.parse(formObj);
+  //data.push(mgrn);
+ // sh.appendRow([mgrn,]);
+  sh.appendRow([mgrn,json.code.value,json.mgth,json.abil,json.model,"","","",json.serial]);
 }
 function sssendForm(theForm) {
   var fileBlob = theForm.myFile;
@@ -22,7 +25,7 @@ function sssendForm(theForm) {
 }
 
 function csvChange(filelist){
-//{@pram Drivefileiterator @ret 2Dimarrydata}
+//{@pram Drivefileiterator @ret 2DimarryformObj}
  var blob = filelist.getBlob().getDataAsString("Shift_JIS");
  var data = Utilities.parseCsv(blob);
  return data;

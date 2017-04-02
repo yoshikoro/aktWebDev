@@ -40,8 +40,9 @@ function success(mgrn){
  */
 function dataAdd(formObj){
   var mgrn = document.main.mgrn.value
-  alert(formObj.name + mgrn)
- // google.script.run.dataAdd(formObj,mgrn);
+  var json = JSON.stringify(formObj);
+  //alert(formObj.code.value + mgrn)
+  google.script.run.sheetDataAdd(json,mgrn);
 
 }
 
