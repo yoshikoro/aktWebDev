@@ -28,11 +28,12 @@ function success(mgrn){
     document.getElementById("machinedata").style.display = "block";
     document.getElementById("List").innerHTML = "ファイルがありませんフォームにデータを入力して下さい" 
   }else{
+  var gas = JSON.stringify(json);
     document.getElementById("List").innerHTML = json.auth
-    google.script.run.withSuccessHandler((function(){
+    google.script.run.withSuccessHandler((function(res){
       document.main.btn.style.display = "block";
-      document.getElementById("List").innerHTML = "作成が完了しました<br>次のファイルを作成する場合は入力して下さい" ; 
-    })).inspectionSheetEdit(dataObj);
+      document.getElementById("List").innerHTML = res ; 
+    })).inspectionSheetEdit(gas);
   }
 }
 
