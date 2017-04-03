@@ -29,6 +29,10 @@ function success(mgrn){
     document.getElementById("List").innerHTML = "ファイルがありませんフォームにデータを入力して下さい" 
   }else{
     document.getElementById("List").innerHTML = json.auth
+    google.script.run.withSuccessHandler((function(){
+      document.main.btn.style.display = "block";
+      document.getElementById("List").innerHTML = "作成が完了しました<br>次のファイルを作成する場合は入力して下さい" ; 
+    })).inspectionSheetEdit(dataObj);
   }
 }
 

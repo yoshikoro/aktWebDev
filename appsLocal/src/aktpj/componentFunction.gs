@@ -4,7 +4,7 @@ function mydatabese(machineCodeStr) {
   var tempid = properties.getProperty("tempid");
   var data = SpreadsheetApp.openById(machineid).getSheets()[0].getDataRange().getValues();
   var tempdataArray = SpreadsheetApp.openById(tempid).getSheets();
-  var dataObj = {}
+  var dataObj = {};
   for (var i = 1;i <= data.length - 1;i++){
     var dataCode = data[i][0].toString();
     if(machineCodeStr == dataCode){

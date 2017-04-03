@@ -1,5 +1,5 @@
-function inspectionSheetEdit(mgrn) {
-  var machineObj = new mydatabese(mgrn);
+function inspectionSheetEdit(dataObj) {
+ 
   return machineObj
 }
 
