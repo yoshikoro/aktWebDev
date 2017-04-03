@@ -40,7 +40,13 @@ function success(mgrn){
  */
 function dataAdd(formObj){
   var mgrn = document.main.mgrn.value
-  var json = JSON.stringify(formObj);
+  var senddata = [];
+  senddata.push(formObj.code.value);
+  senddata.push(formObj.mgth.value);
+  senddata.push(formObj.abil.value);
+  senddata.push(formObj.model.value);
+  senddata.push(formObj.serial.value);
+  var json = JSON.stringify(senddata);
   //alert(formObj.code.value + mgrn)
   google.script.run.sheetDataAdd(json,mgrn);
 
