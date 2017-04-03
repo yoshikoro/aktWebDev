@@ -4,24 +4,25 @@ function mydatabese(machineCodeStr) {
   var tempid = properties.getProperty("tempid");
   var data = SpreadsheetApp.openById(machineid).getSheets()[0].getDataRange().getValues();
   var tempdataArray = SpreadsheetApp.openById(tempid).getSheets();
+  var dataObj = {}
   for (var i = 1;i <= data.length - 1;i++){
     var dataCode = data[i][0].toString();
     if(machineCodeStr == dataCode){
-      this.auth = "ファイルを作成しています";
-      this.mgrn = data[i][0].toString();
-      this.code = data[i][1].toString().substr(0,3);
-      this.mgnm = data[i][2].toString();
-      this.abil = data[i][3].toString();
-      this.model = data[i][4].toString();
-      this.limit = data[i][5].toString();
-      this.buy = data[i][6].toString();
-      this.hour = data[i][7].toString();
-      this.serial = data[i][8].toString();
-      return JSON.stringify(this)
+      dataObj.auth = "ファイルを作成しています";
+      dataObj.mgrn = data[i][0].toString();
+      dataObj.code = data[i][1].toString().substr(0,3);
+      dataObj.mgnm = data[i][2].toString();
+      dataObj.abil = data[i][3].toString();
+      dataObj.model = data[i][4].toString();
+      dataObj.limit = data[i][5].toString();
+      dataObj.buy = data[i][6].toString();
+      dataObj.hour = data[i][7].toString();
+      dataObj.serial = data[i][8].toString();
+      return JSON.stringify(dataObj)
      }
   }
-  this.auth = "nodata"
-  return JSON.stringify(this)
+  dataObj.auth = "nodata"
+  return JSON.stringify(dataObj)
 }
 
 function human(namedata){ //シート作成用重複カウント　param = arrey
