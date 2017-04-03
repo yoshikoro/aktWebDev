@@ -11,8 +11,8 @@
  */  
 function SendForm(parentNode){
     document.getElementById("search").style.display = "none";
-    var mgrn = parentNode.mgrn.value
-    google.script.run.withSuccessHandler(success).mydatabese(mgrn);
+    var mgrn = parentNode.mgrn.value;
+    google.script.run.withSuccessHandler(success).mydatabese(mgrn.toUpperCase());
     //document.getElementById("List").innerHTML = mgrn
     //return machineNumber
 } 
@@ -44,8 +44,8 @@ function success(mgrn){
  */
 function dataAdd(formObj){
   var senddata = [];
-  senddata.push(document.main.mgrn.value);
-  senddata.push(formObj.code.value);
+  senddata.push(document.main.mgrn.value.toUpperCase());
+  senddata.push(formObj.code.value.toUpperCase());
   senddata.push(formObj.mgth.value);
   senddata.push(formObj.abil.value);
   senddata.push(formObj.model.value);
