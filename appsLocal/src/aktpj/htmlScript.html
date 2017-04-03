@@ -35,20 +35,28 @@ function success(mgrn){
 /**
  *フォームデータを登録する関数 
  * @pram{obj} フォームオブジェクト
- * @pram{String} 管理番号
  * @return{void}
  */
 function dataAdd(formObj){
-  var mgrn = document.main.mgrn.value
   var senddata = [];
+  senddata.push(document.main.mgrn.value);
   senddata.push(formObj.code.value);
   senddata.push(formObj.mgth.value);
   senddata.push(formObj.abil.value);
   senddata.push(formObj.model.value);
+  senddata.push("");
+  senddata.push("");
+  senddata.push("");
   senddata.push(formObj.serial.value);
   var json = JSON.stringify(senddata);
   //alert(formObj.code.value + mgrn)
-  google.script.run.sheetDataAdd(json,mgrn);
+  google.script.run.withSuccessHandler((function(){
+  document.input.btn.style.display = "none";
+  document.getElementById("List").innerHTML = "登録が完了しました<br>作成ボタンを押して下さい";
+  document.getElementById("search").style.display = "block";
+  document.getElementById("machinedata").style.display = "none";
+  })()
+  ).sheetDataAdd(json);
 
 }
 

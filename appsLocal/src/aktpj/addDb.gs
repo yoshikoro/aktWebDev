@@ -11,13 +11,13 @@ function formatdb(){
     }
 }
 
-function sheetDataAdd(formObj,mgrn){
+function sheetDataAdd(dataArray){
   var tempid = PropertiesService.getScriptProperties().getProperty("dbid");
   var sh = SpreadsheetApp.openById(tempid).getSheets()[0];
-  var json = JSON.parse(formObj);
+  var json = JSON.parse(dataArray);
   //data.push(mgrn);
  // sh.appendRow([mgrn,]);
-  sh.appendRow([mgrn,json.code.value,json.mgth,json.abil,json.model,"","","",json.serial]);
+  sh.appendRow(json);
 }
 function sssendForm(theForm) {
   var fileBlob = theForm.myFile;
