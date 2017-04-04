@@ -34,7 +34,7 @@ function success(mgrn){
     google.script.run.withSuccessHandler((function(res){
       document.main.btn.style.display = "block";
       document.main.mgrn.value = "";
-      document.getElementById("List").innerHTML = insertJson(res) ; 
+      document.getElementById("List").innerHTML = res
     })).inspectionSheetEdit(gas);
   }
 }
@@ -78,10 +78,12 @@ function dataAdd(formObj){
 function insertJson(strArray){
  var json = JSON.parse(strArray);
  var content = tablefunc(json);
+ //var content = json;
  document.getElementById("tablecomplete").innerHTML = content;
  }
 
 function tablefunc(dataArray) {
+ var header = "<b>フォルダ内の状況<b><br>"
  var content = "<table class='type08'><thead><tr>"
               + "<th>管理番号</th><th>アクセス用ＵＲＬ</th>"
               + "</tr></thead><tbody>";  
@@ -92,7 +94,7 @@ function tablefunc(dataArray) {
       }
     content = content + "</tr>";
   }
-  content = content + "</tbody></table><body>";      
+  content = header + content + "</tbody></table><body>";      
   return content
 }
 

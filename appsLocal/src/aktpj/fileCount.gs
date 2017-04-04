@@ -29,7 +29,8 @@ function mvFile(FilesNameArray,switchflg){
       var file = files.next();
       fileName[num] =new Array;;
       fileName[num].push(file.getName());
-      fileName[num].push(file.getUrl());
+      fileName[num].push("<a href=" + file.getUrl() + " target=_blank>"　+ file.getName() +　"ファイルへのリンク</a>");
+      num++
     }
     return JSON.stringify(fileName)
     break;
