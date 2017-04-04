@@ -121,7 +121,7 @@ function mvFile(moveFilesArray){
     if(targetfolder == undefined){return}
   }
   moveFilesArray.forEach(function(element) {
-   if(element == ) 
+   if(element == ""){} 
   });
   for (var i = 0;i<=moveFilesArray.length-1;i++){
     DriveApp.getFoldersByName(gotoFolderName).next().addFile(mvFileArry[i]);
