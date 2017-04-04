@@ -123,25 +123,28 @@ function mvFile(FilesNameArray,switchflg){
   
   switch(switchflg){
   case 1:
-  while(files.hasNext()){
-  var file = files.next();
-  FilesNameArray.forEach(function(element) {
-   if(element == fileName.getName()){
-     DriveApp.removeFile(child)
-   } 
-  });}
-  break;
+    while(files.hasNext()){
+    var file = files.next();
+    FilesNameArray.forEach(function(element) {
+     if(element == fileName.getName()){
+       targetfolder.addFile(file);
+       folder.removeFile(file);
+     } 
+    }())}
+    break;
   case 2:
-  for (var i = 0;i<=moveFilesArray.length-1;i++){
-    DriveApp.getFoldersByName(gotoFolderName).next().addFile(mvFileArry[i]);
-    riveApp.getFoldersByName(mvFolderName).next().removeFile(mvFileArry[i]);
-  }
-  break;
+    for (var i = 0;i<=moveFilesArray.length-1;i++){
+      DriveApp.getFoldersByName(gotoFolderName).next().addFile(mvFileArry[i]);
+      riveApp.getFoldersByName(mvFolderName).next().removeFile(mvFileArry[i]);
+    }
+    break;
   case 3:
-  mvRoot(FilesNameArray,folder)
+    mvRoot(FilesNameArray,folder)
+    break;
 }
 return "ret"
 }
+
 function mvRoot(fileId,folder){
   var affilFolder = DriveApp.getFileById(fileId).getParents().next();
   var file = DriveApp.getFileById(fileId);
