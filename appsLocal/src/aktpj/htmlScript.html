@@ -35,6 +35,7 @@ function success(mgrn){
       document.main.btn.style.display = "block";
       document.main.mgrn.value = "";
       document.getElementById("List").innerHTML = res
+      google.script.run.withSuccessHandler(insertJson).mvFile("FilesNameArray",2);
     })).inspectionSheetEdit(gas);
   }
 }

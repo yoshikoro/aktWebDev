@@ -34,6 +34,6 @@ function inspectionSheetEdit(dataObj) {
        targetValues[settingdata[8][1]][settingdata[8][2]] = obj.limit
        newSp.getSheets()[0].getDataRange().setValues(targetValues);
        
-  return "作成完了"
+  return obj.mgrn + "作成完了"
 }
 
