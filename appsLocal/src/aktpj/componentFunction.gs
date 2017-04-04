@@ -109,6 +109,7 @@ return flag;
 }
 
 function mvFile(moveFilesArray){
+  //moveFilesArray = [];
   var fldId = PropertiesService.getScriptProperties().getProperty("fldid");
   var compfldId = PropertiesService.getScriptProperties().getProperty("compfldid");
   try{
@@ -119,6 +120,9 @@ function mvFile(moveFilesArray){
     if(folder == undefined){return}
     if(targetfolder == undefined){return}
   }
+  moveFilesArray.forEach(function(element) {
+   if(element == ) 
+  });
   for (var i = 0;i<=moveFilesArray.length-1;i++){
     DriveApp.getFoldersByName(gotoFolderName).next().addFile(mvFileArry[i]);
     riveApp.getFoldersByName(mvFolderName).next().removeFile(mvFileArry[i]);
