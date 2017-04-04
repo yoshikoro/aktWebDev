@@ -13,6 +13,7 @@ function inspectionSheetEdit(dataObj) {
          var target = sp.getSheetByName(sheets[i].getName());
          target.copyTo(newSp).setName(sheets[i].getName());
          newSp.deleteSheet(newSp.getSheets()[0]);
+         mvFile(newSp.getId(),3);
        }
      }
      if(newSp == undefined){
@@ -20,6 +21,7 @@ function inspectionSheetEdit(dataObj) {
        var target = sp.getSheetByName("ETC");
        target.copyTo(newSp).setName("ETC");
        newSp.deleteSheet(newSp.getSheets()[0]);
+       mvFile(newSp.getId(),3);
      }
      var targetValues = newSp.getSheets()[0].getDataRange().getValues();
        targetValues[settingdata[1][1]][settingdata[1][2]] = obj.mgrn

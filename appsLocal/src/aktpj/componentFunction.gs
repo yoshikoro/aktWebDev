@@ -108,7 +108,7 @@ function arrdel(clno,frarr){//@pram = str1,str2 ,ret = flag
 return flag;
 }
 
-function mvFile(moveFilesArray){
+function mvFile(FilesNameArray,switchflg){
   //moveFilesArray = [];
   var fldId = PropertiesService.getScriptProperties().getProperty("fldid");
   var compfldId = PropertiesService.getScriptProperties().getProperty("compfldid");
@@ -120,11 +120,31 @@ function mvFile(moveFilesArray){
     if(folder == undefined){return}
     if(targetfolder == undefined){return}
   }
-  moveFilesArray.forEach(function(element) {
-   if(element == ""){} 
-  });
+  
+  switch(switchflg){
+  case 1:
+  while(files.hasNext()){
+  var file = files.next();
+  FilesNameArray.forEach(function(element) {
+   if(element == fileName.getName()){
+     DriveApp.removeFile(child)
+   } 
+  });}
+  break;
+  case 2:
   for (var i = 0;i<=moveFilesArray.length-1;i++){
     DriveApp.getFoldersByName(gotoFolderName).next().addFile(mvFileArry[i]);
     riveApp.getFoldersByName(mvFolderName).next().removeFile(mvFileArry[i]);
   }
+  break;
+  case 3:
+  mvRoot(FilesNameArray,folder)
+}
+return "ret"
+}
+function mvRoot(fileId,folder){
+  var affilFolder = DriveApp.getFileById(fileId).getParents().next();
+  var file = DriveApp.getFileById(fileId);
+  folder.addFile(file);
+  affilFolder.removeFile(file);
 }
