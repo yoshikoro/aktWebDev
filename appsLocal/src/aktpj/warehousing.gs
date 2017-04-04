@@ -33,6 +33,7 @@ function inspectionSheetEdit(dataObj) {
        targetValues[settingdata[7][1]][settingdata[7][2]] = obj.hour
        targetValues[settingdata[8][1]][settingdata[8][2]] = obj.limit
        newSp.getSheets()[0].getDataRange().setValues(targetValues);
-  return "作成完了"
+       var returnArray = mvFile("Array",2)
+  return JSON.stringify(returnArray) 
 }
 

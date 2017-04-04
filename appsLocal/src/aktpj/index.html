@@ -3,6 +3,7 @@
     <html>
       <head>
           <?!=HtmlService.createHtmlOutputFromFile("appsLocal/src/aktpj/htmlScript").getContent();?>
+          <?!=HtmlService.createHtmlOutputFromFile("appsLocal/src/aktpj/htmlStyle").getContent();?>
           <!-- google.script.run gas-->
           <!-- google.script.run gas-->
           <!-- google.script.run gas-->
@@ -12,7 +13,7 @@
     <body>
         <form name="main" id="factoryakt">
             <br>管理番号入力<br>
-            <input type= "text" name="mgrn" value="" size="10" maxlength="10"><br>
+            <input type= "text" name="mgrn" value="" size="10" maxlength="10"><br><br>
             <button type= "button" name="btn" value="Create" size="10" onclick="SendForm(this.parentNode);" id="search">作成</button>
         </form>
         <form name="input" id="machinedata">
@@ -32,8 +33,8 @@
         </form><br>
         <P>ステータスとファイル状況</P>
         <div id="List">
-            <div id="tablenotcomp" border="3"></table>
-            <div id="tablecomplete" border="3"></table>   
+            <div id="tablenotcomp"></div>
+            <div id="tablecomplete"></div>  
         </div>
     </body>
 </html>

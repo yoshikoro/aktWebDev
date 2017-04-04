@@ -15,10 +15,9 @@ function sheetDataAdd(dataArray){
   var tempid = PropertiesService.getScriptProperties().getProperty("dbid");
   var sh = SpreadsheetApp.openById(tempid).getSheets()[0];
   var json = JSON.parse(dataArray);
-  //data.push(mgrn);
- // sh.appendRow([mgrn,]);
   sh.appendRow(json);
 }
+
 function sssendForm(theForm) {
   var fileBlob = theForm.myFile;
   return csvChange(fileBlob);

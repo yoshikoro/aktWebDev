@@ -1,6 +1,7 @@
 <script>
  window.addEventListener("load",function(){
  document.getElementById("machinedata").style.display = "none";
+ google.script.run.withSuccessHandler(insertJson).mvFile("FilesNameArray",2);
 },false);
 
 
@@ -28,12 +29,12 @@ function success(mgrn){
     document.getElementById("machinedata").style.display = "block";
     document.getElementById("List").innerHTML = "ファイルがありませんフォームにデータを入力して下さい" 
   }else{
-  var gas = JSON.stringify(json);
+    var gas = JSON.stringify(json);
     document.getElementById("List").innerHTML = json.auth
     google.script.run.withSuccessHandler((function(res){
       document.main.btn.style.display = "block";
       document.main.mgrn.value = "";
-      document.getElementById("List").innerHTML = res ; 
+      document.getElementById("List").innerHTML = insertJson(res) ; 
     })).inspectionSheetEdit(gas);
   }
 }
@@ -76,17 +77,19 @@ function dataAdd(formObj){
 
 function insertJson(strArray){
  var json = JSON.parse(strArray);
- var contents = tablefunc(json);
- document.getElementById("List").innerHTML = contents;
+ var content = tablefunc(json);
+ document.getElementById("tablecomplete").innerHTML = content;
  }
 
 function tablefunc(dataArray) {
  var content = "<table class='type08'><thead><tr>"
-              + "<th>ファイル名</th>"
+              + "<th>管理番号</th><th>アクセス用ＵＲＬ</th>"
               + "</tr></thead><tbody>";  
-  for(var i = 0;i<dataArray.length;i++){ 
+  for(var i = 0;i < dataArray.length;i++){
     content = content + "<tr>";
-    content = content + "<th scope='row'><b>" + dataArray[i] + "</b></th>";
+      for(var j = 0;j < dataArray[i].length;j++){
+        content = content + "<th scope='row'><b>" + dataArray[i][j] + "</b></th>";
+      }
     content = content + "</tr>";
   }
   content = content + "</tbody></table><body>";      
