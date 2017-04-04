@@ -9,14 +9,14 @@ function inspectionSheetEdit(dataObj) {
        if(obj.code != sheets[i].getName()){
          continue;
        }else{
-         var newSp = SpreadsheetApp.create(myday + ":" + obj.mgrn);
+         var newSp = SpreadsheetApp.create(obj.mgrn);
          var target = sp.getSheetByName(sheets[i].getName());
          target.copyTo(newSp).setName(sheets[i].getName());
          newSp.deleteSheet(newSp.getSheets()[0]);
        }
      }
      if(newSp == undefined){
-       var newSp = SpreadsheetApp.create(myday + ":" + obj.mgrn);
+       var newSp = SpreadsheetApp.create(obj.mgrn);
        var target = sp.getSheetByName("ETC");
        target.copyTo(newSp).setName("ETC");
        newSp.deleteSheet(newSp.getSheets()[0]);

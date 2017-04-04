@@ -107,3 +107,20 @@ function arrdel(clno,frarr){//@pram = str1,str2 ,ret = flag
   }//i
 return flag;
 }
+
+function mvFile(moveFilesArray){
+  var fldId = PropertiesService.getScriptProperties().getProperty("fldid");
+  var compfldId = PropertiesService.getScriptProperties().getProperty("compfldid");
+  try{
+    var folder = DriveApp.getFolderById(fldId);
+    var targetfolder = DriveApp.getFolderById(compfldId);
+    var files = folder.getFiles();
+  }catch(e){
+    if(folder == undefined){return}
+    if(targetfolder == undefined){return}
+  }
+  for (var i = 0;i<=moveFilesArray.length-1;i++){
+    DriveApp.getFoldersByName(gotoFolderName).next().addFile(mvFileArry[i]);
+    riveApp.getFoldersByName(mvFolderName).next().removeFile(mvFileArry[i]);
+  }
+}

@@ -32,6 +32,7 @@ function success(mgrn){
     document.getElementById("List").innerHTML = json.auth
     google.script.run.withSuccessHandler((function(res){
       document.main.btn.style.display = "block";
+      document.main.mgrn.value = "";
       document.getElementById("List").innerHTML = res ; 
     })).inspectionSheetEdit(gas);
   }
