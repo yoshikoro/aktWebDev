@@ -1,27 +1,25 @@
 <script>
- window.addEventListener("load",function(){
- document.getElementById("machinedata").style.display = "none";
- google.script.run.withSuccessHandler(insertJson).mvFile("FilesNameArray",2);
-},false);
-
+  window.addEventListener("load",function(){
+  document.getElementById("machinedata").style.display = "none";
+  google.script.run.withSuccessHandler(insertJson).mvFile("FilesNameArray",2);
+  },false);
+  //document.getElementById("search").addEventListener("click",(function(){})))
 
 /**
  * データベースより照合します
- *@pram{obj} フォームオブジェクト 
+ *@pram{obj} parentNode フォームオブジェクト 
  *@return{void}
  */  
 function SendForm(parentNode){
     document.getElementById("search").style.display = "none";
     var mgrn = parentNode.mgrn.value;
     google.script.run.withSuccessHandler(success).mydatabese(mgrn.toUpperCase());
-    //document.getElementById("List").innerHTML = mgrn
-    //return machineNumber
 } 
 
 /**
  * コールバック関数
- *@pram{String} 管理番号 
- *@return{void}
+ *@pram{String} mgrn 管理番号 
+ *@return{void} 
  */  
 function success(mgrn){
   var json = JSON.parse(mgrn);
@@ -42,9 +40,10 @@ function success(mgrn){
 
 /**
  *フォームデータを登録する関数 
- * @pram{obj} フォームオブジェクト
+ * @pram{obj} formObj フォームオブジェクト
  * @return{void}
- */
+ * 
+*/
 function dataAdd(formObj){
   var senddata = [];
   senddata.push(document.main.mgrn.value.toUpperCase());
@@ -57,7 +56,6 @@ function dataAdd(formObj){
   senddata.push("");
   senddata.push(formObj.serial.value);
   var json = JSON.stringify(senddata);
-  //alert(formObj.code.value + mgrn)
   google.script.run.withSuccessHandler((function(){
   document.input.btn.style.display = "none";
   document.getElementById("List").innerHTML = "登録が完了しました<br>作成ボタンを押して下さい";
@@ -65,23 +63,26 @@ function dataAdd(formObj){
   document.getElementById("machinedata").style.display = "none";
   })()
   ).sheetDataAdd(json);
-
 }
 
-
-
 /**
- * 配列をテーブル形式に挿入
- *@pram{String[]} テーブル化する配列 
- *@return{void}
- */  
+ * 配列をテーブル形式に挿入する関数
+ * @pram{String[][]} strArray テーブル化する配列 
+ * @return{void}
+*/  
 
 function insertJson(strArray){
  var json = JSON.parse(strArray);
  var content = tablefunc(json);
- //var content = json;
  document.getElementById("tablecomplete").innerHTML = content;
- }
+}
+
+/**
+ * テーブルを作成する関数
+ * @pram{String[][]} dataArray テーブルにする配列 
+ * @return{String} content テーブル化した文字列
+ * 
+ */
 
 function tablefunc(dataArray) {
  var header = "<b>フォルダ内の状況<b><br>"

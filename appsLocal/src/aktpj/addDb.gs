@@ -1,3 +1,6 @@
+/**
+ * つくりかけ
+ */
 function formatdb(){
   var tempid = PropertiesService.getScriptProperties().getProperty("dbid");
   var data = SpreadsheetApp.openById(tempid).getSheets()[0].getDataRange().getValues();
@@ -11,21 +14,25 @@ function formatdb(){
     }
 }
 
+/**
+ * フォーム入力されたデータを対象のシートに入力する関数
+ * @param {String[]} dataArray フォーム入力されたデータ配列 
+ * @return {void} 
+ */
 function sheetDataAdd(dataArray){
   var tempid = PropertiesService.getScriptProperties().getProperty("dbid");
   var sh = SpreadsheetApp.openById(tempid).getSheets()[0];
   var json = JSON.parse(dataArray);
   sh.appendRow(json);
 }
-
-function sssendForm(theForm) {
+/**
+ * 
+ * @param {Object} theForm フォームオブジェクト 
+ * @return {String[][]} twoDimensionalData ２次元データ配列
+ */
+function addFile(theForm) {
   var fileBlob = theForm.myFile;
-  return csvChange(fileBlob);
-}
-
-function csvChange(filelist){
-//{@pram Drivefileiterator @ret 2DimarryformObj}
- var blob = filelist.getBlob().getDataAsString("Shift_JIS");
- var data = Utilities.parseCsv(blob);
- return data;
+  var blob = fileBlob.getBlob().getDataAsString("Shift_JIS");
+  var twoDimensionalData = Utilities.parseCsv(blob);
+  return twoDimensionalData;
 }

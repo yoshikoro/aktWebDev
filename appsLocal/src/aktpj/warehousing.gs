@@ -1,3 +1,8 @@
+/**
+ * 
+ * @param {Object} dataObj シートに挿入するデータ 
+ * @return {String} 完了メッセージ
+ */
 function inspectionSheetEdit(dataObj) {
    var obj = JSON.parse(dataObj);
    var myday = Utilities.formatDate(new Date() , 'Asia/Tokyo' , 'YYYY/MM/dd');

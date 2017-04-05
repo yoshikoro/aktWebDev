@@ -1,3 +1,13 @@
+/**
+ * ファイルを移動及びフォルダ内のファイルを列挙する関数
+ * @param {String[]} FilesNameArray 移動対象のファイル名配列 
+ * @param {Number} switchflg 移動か列挙を切り替える数字
+ * @param {Number} switchflg case:1 移動する処理
+ * @param {Number} switchflg case:2 ファイルを列挙する処理
+ * @param {Number} switchflg case:3 初期作成時のファイルを移動する処理
+ * @return {String} String case:1,3 完了文字列
+ * @return {String[][]} fileName ファイル名称とURLの２次元配列  
+ */
 function mvFile(FilesNameArray,switchflg){
   //moveFilesArray = [];
   var fldId = PropertiesService.getScriptProperties().getProperty("fldid");
@@ -38,34 +48,17 @@ function mvFile(FilesNameArray,switchflg){
     mvRoot(FilesNameArray,folder)
     break;
 }
-return "ret"
+return "完了"
 }
 
+/**
+ * 
+ * @param {String} fileId 対象ファイルのId 
+ * @param {obj} folder 対象フォルダオブジェクト 
+ */
 function mvRoot(fileId,folder){
   var affilFolder = DriveApp.getFileById(fileId).getParents().next();
   var file = DriveApp.getFileById(fileId);
   folder.addFile(file);
   affilFolder.removeFile(file);
 }
-
-
-function arr1Dim(arrTwoDimension,Dimension,sepNo){//ret = 1DimArray
-var arr = [];
-  for(var i = 0;i<=sepNo;i++){
-  arr.push(arrTwoDimension[Dimension][i]);
-  }
- return arr
-}
-
-function arr2Dim(arr,Separator){//ret=2DimArray @{arr=Array Separator = int}
-  var result = arr.length/Separator;
-  var arr2Dim = [];
-    for (var i = 0;i<=result-1;i++){
-      arr2Dim[i] = new Array;
-       for(var j = 0;j<=11;j++){
-         arr2Dim[i].push(arr.shift());
-       }
-    }
-  var arry = arr1Dim(arr2Dim,0,11)
-}
-
