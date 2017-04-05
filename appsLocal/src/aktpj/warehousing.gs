@@ -37,6 +37,7 @@ function inspectionSheetEdit(dataObj) {
        targetValues[settingdata[6][1]][settingdata[6][2]] = myday
        targetValues[settingdata[7][1]][settingdata[7][2]] = obj.hour
        targetValues[settingdata[8][1]][settingdata[8][2]] = obj.limit
+       targetValues[settingdata[9][1]][settingdata[9][2]] = obj.clm
        newSp.getSheets()[0].getDataRange().setValues(targetValues);
        
   return obj.mgrn + "作成完了"
