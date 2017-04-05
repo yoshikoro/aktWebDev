@@ -3,7 +3,14 @@
   document.getElementById("machinedata").style.display = "none";
   google.script.run.withSuccessHandler(insertJson).mvFile("FilesNameArray",2);
   },false);
-  //document.getElementById("search").addEventListener("click",(function(){})))
+  document.getElementById("search").addEventListener("click",(function(e){
+    //e.style.display = "none";
+    document.getElementById("search").style.display = "none";
+    var mgrn = document.getElementById("factoryakt").mgrn.value;
+    //var mgrn = e.parentNode.mgrn.value;
+    google.script.run.withSuccessHandler(success).mydatabese(mgrn.toUpperCase());
+  } 
+  )(this));
 
 /**
  * データベースより照合します
