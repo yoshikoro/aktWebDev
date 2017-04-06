@@ -1,28 +1,19 @@
 <script>
   window.addEventListener("load",function(){
-  document.getElementById("machinedata").style.display = "none";
-  google.script.run.withSuccessHandler(insertJson).mvFile("FilesNameArray",2);
+ // document.getElementById("machinedata").style.display = "none";
+  //google.script.run.withSuccessHandler(insertJson).mvFile("FilesNameArray",2);
+  document.getElementById("search").addEventListener("click",function(e){
+  document.getElementById("search").style.display = "none";
+  var mgrn = document.getElementById("factoryakt").mgrn.value;
+  //google.script.run.withSuccessHandler(success).mydatabese(mgrn.toUpperCase());
   },false);
-  document.getElementById("search").addEventListener("click",(function(e){
-    //e.style.display = "none";
-    document.getElementById("search").style.display = "none";
-    var mgrn = document.getElementById("factoryakt").mgrn.value;
-    //var mgrn = e.parentNode.mgrn.value;
-    google.script.run.withSuccessHandler(success).mydatabese(mgrn.toUpperCase());
-  } 
-  )(this));
-
-/**
- * データベースより照合します
- *@pram{obj} parentNode フォームオブジェクト 
- *@return{void}
- */  
-function SendForm(parentNode){
-    document.getElementById("search").style.display = "none";
-    var mgrn = parentNode.mgrn.value;
-    google.script.run.withSuccessHandler(success).mydatabese(mgrn.toUpperCase());
-} 
-
+  document.getElementById("add").addEventListener("click",callbacktest,false);
+   },false);
+  
+  function callbacktest(){
+  alert(document.input.code.value);
+  }
+  
 /**
  * コールバック関数
  *@pram{String} mgrn 管理番号 
@@ -46,12 +37,14 @@ function success(mgrn){
 }
 
 /**
- *フォームデータを登録する関数 
+ *フォームデータを登録する関数
+ *コールバック関数 
  * @pram{obj} formObj フォームオブジェクト
  * @return{void}
  * 
 */
 function dataAdd(formObj){
+ var formObj = document.input
   var senddata = [];
   senddata.push(document.main.mgrn.value.toUpperCase());
   senddata.push(formObj.code.value.toUpperCase());
